@@ -1,3 +1,4 @@
+import { HomeScrollStory } from "@/components/animations/home-scroll-story";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { ApproachSection } from "@/components/sections/approach";
@@ -10,6 +11,7 @@ import { ServicesSection } from "@/components/sections/services";
 export default function Home() {
   return (
     <>
+      <HomeScrollStory />
       <SiteHeader />
       <main>
         <HeroSection />

@@ -89,8 +89,17 @@
     @apply border-border;
   }
 
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
   html {
-    @apply scroll-smooth font-sans antialiased;
+    @apply font-sans antialiased;
   }
 
   body {
