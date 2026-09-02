@@ -36,7 +36,7 @@ export function SiteHeader() {
           : "border-b border-transparent bg-transparent"
       )}
     >
-      <Container as="nav" aria-label="Main navigation">
+      <Container as="nav" inset="edge" aria-label="Main navigation">
         <div className="flex h-[4.5rem] items-center justify-between md:h-20">
           <Logo />
 

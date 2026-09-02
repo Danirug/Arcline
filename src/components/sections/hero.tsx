@@ -21,7 +21,10 @@ export function HeroSection() {
         aria-hidden
       />
 
-      <Container className="relative z-10 flex min-h-[92vh] flex-col justify-center pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-44 lg:pb-32">
+      <Container
+        inset="edge"
+        className="relative z-10 flex min-h-[92vh] flex-col justify-center pt-32 pb-20 md:pt-40 md:pb-28 lg:pt-44 lg:pb-32"
+      >
         <div data-hero="content" className="max-w-3xl">
           <div data-hero="eyebrow">
             <SectionLabel>{hero.eyebrow}</SectionLabel>

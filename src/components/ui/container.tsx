@@ -5,6 +5,8 @@ type ContainerProps = {
   className?: string;
   as?: "div" | "section" | "header" | "footer" | "nav";
   id?: string;
+  /** Edge-aligned layout for hero/header — avoids large empty gutters on wide monitors */
+  inset?: "default" | "edge";
 };
 
 export function Container({
@@ -12,11 +14,18 @@ export function Container({
   className,
   as: Component = "div",
   id,
+  inset = "default",
 }: ContainerProps) {
   return (
     <Component
       id={id}
-      className={cn("mx-auto w-full max-w-7xl px-6 md:px-10 lg:px-16", className)}
+      className={cn(
+        "w-full",
+        inset === "edge"
+          ? "px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-14"
+          : "mx-auto max-w-7xl px-6 md:px-8 lg:px-10 xl:max-w-[90rem] xl:px-12 2xl:max-w-[96rem]",
+        className
+      )}
     >
       {children}
     </Component>
