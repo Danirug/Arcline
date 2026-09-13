@@ -15,8 +15,7 @@ export const navigation = [
 ] as const;
 
 export const navActions = {
-  signIn: { label: "Sign in", href: "/sign-in" },
-  cta: { label: "Start a project", href: "#contact" },
+  cta: { label: "Book a consultation", href: "#contact" },
 } as const;
 
 export const hero = {

@@ -22,13 +22,13 @@ export function HeroSection() {
       />
 
       <Container inset="edge" className="relative z-10 pt-24 sm:pt-28 lg:pt-32">
-        <div data-hero="visual" className="max-w-[90rem]">
+        <div data-hero="visual" className="max-w-[90rem] will-change-transform">
           <HeroWorkflowVisual />
         </div>
 
         <div
           data-hero="content"
-          className="mt-14 max-w-[46rem] pb-16 sm:mt-16 md:pb-20 lg:mt-20 lg:pb-24"
+          className="mt-14 max-w-[46rem] pb-16 will-change-[transform,opacity] sm:mt-16 md:pb-20 lg:mt-20 lg:pb-24"
         >
           <h1
             data-hero="headline"

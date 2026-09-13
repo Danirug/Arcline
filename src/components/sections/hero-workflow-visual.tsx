@@ -152,6 +152,12 @@ export function HeroWorkflowVisual() {
           { opacity: 1, x: 0, duration: 0.45 },
           `flow+=${0.15 + at}`
         )
+          .fromTo(
+            spinners[index],
+            { rotation: 0 },
+            { rotation: 540, duration: 0.7, ease: "none" },
+            `flow+=${0.15 + at}`
+          )
           .to(spinners[index], { opacity: 0, duration: 0.2 }, `flow+=${0.62 + at}`)
           .to(checks[index], { opacity: 1, duration: 0.2 }, `flow+=${0.62 + at}`);
       });
@@ -195,7 +201,7 @@ export function HeroWorkflowVisual() {
       >
         <span
           data-wf="rail"
-          className="absolute inset-0 origin-top scale-y-0 rounded-full bg-arc-blue"
+          className="absolute inset-0 origin-top scale-y-0 rounded-full bg-arc-blue will-change-transform"
         />
       </div>
 
@@ -207,7 +213,7 @@ export function HeroWorkflowVisual() {
         <div className="absolute left-0 top-[var(--y1)] h-[2px] w-[var(--bend-x)] bg-[#e3e2da]">
           <span
             data-wf="line-1"
-            className="absolute inset-0 origin-left scale-x-0 bg-arc-blue"
+            className="absolute inset-0 origin-left scale-x-0 bg-arc-blue will-change-transform"
           />
         </div>
         <svg
@@ -237,7 +243,7 @@ export function HeroWorkflowVisual() {
         <div className="absolute right-0 top-[calc(var(--y1)+var(--drop))] h-[2px] left-[calc(var(--bend-x)+var(--bend-w))] bg-[#e3e2da]">
           <span
             data-wf="line-2"
-            className="absolute inset-0 origin-left scale-x-0 bg-arc-blue"
+            className="absolute inset-0 origin-left scale-x-0 bg-arc-blue will-change-transform"
           />
         </div>
       </div>
@@ -247,7 +253,7 @@ export function HeroWorkflowVisual() {
         <Tag>{ask.tag}</Tag>
         <div
           data-wf="ask-card"
-          className="ml-9 mt-4 max-w-[19rem] rounded-xl border border-carbon/10 bg-white p-4 opacity-0 shadow-[0_12px_27px_rgba(17,19,21,0.06),0_49px_49px_rgba(17,19,21,0.035),0_111px_67px_rgba(17,19,21,0.02)] sm:ml-10 lg:ml-0 lg:max-w-none"
+          className="ml-9 mt-4 max-w-[19rem] rounded-xl border border-carbon/10 bg-white p-4 opacity-0 shadow-[0_12px_28px_rgba(17,19,21,0.07),0_40px_60px_-20px_rgba(17,19,21,0.06)] will-change-[transform,opacity] sm:ml-10 lg:ml-0 lg:max-w-none"
         >
           <span className="font-mono text-[0.625rem] uppercase tracking-[0.12em] text-carbon/40">
             {ask.label}
@@ -284,14 +290,14 @@ export function HeroWorkflowVisual() {
               key={step}
               data-wf="step"
               className={cn(
-                "inline-flex w-fit max-w-full items-center gap-2 rounded-md border border-carbon/10 bg-white/80 px-2.5 py-1.5 opacity-0 backdrop-blur-sm",
+                "inline-flex w-fit max-w-full items-center gap-2 rounded-md border border-carbon/10 bg-white px-2.5 py-1.5 opacity-0 will-change-[transform,opacity]",
                 MONO_LABEL
               )}
             >
               <span className="relative size-3.5 shrink-0">
                 <CircleNotchIcon
                   data-wf="spinner"
-                  className="absolute inset-0 size-3.5 text-carbon/35 motion-safe:animate-spin"
+                  className="absolute inset-0 size-3.5 text-carbon/35"
                   weight="bold"
                 />
                 <CheckIcon
@@ -334,7 +340,7 @@ export function HeroWorkflowVisual() {
         <Tag>{result.tag}</Tag>
         <div
           data-wf="result"
-          className="ml-9 mt-4 max-w-[22rem] overflow-hidden rounded-2xl bg-graphite p-5 text-off-white opacity-0 shadow-[0_28px_56px_-20px_rgba(17,19,21,0.5)] sm:ml-10 lg:ml-0 lg:max-w-none"
+          className="ml-9 mt-4 max-w-[22rem] overflow-hidden rounded-2xl bg-graphite p-5 text-off-white opacity-0 shadow-[0_28px_56px_-20px_rgba(17,19,21,0.5)] will-change-[transform,opacity] sm:ml-10 lg:ml-0 lg:max-w-none"
         >
           <div className="flex items-center justify-between gap-3">
             <span className="font-mono text-[0.625rem] uppercase tracking-[0.14em] text-off-white/50">

@@ -40,7 +40,7 @@ export function SiteHeader() {
         aria-label="Main navigation"
         className={cn(
           "pointer-events-auto relative mx-auto flex h-[3.75rem] w-full max-w-[90rem] items-center gap-4 rounded-2xl border px-4 transition-[background-color,border-color,box-shadow] duration-300 sm:px-5 lg:h-[4.25rem] lg:px-6",
-          "border-carbon/[0.08] bg-[#f8f8f6]/85 backdrop-blur-xl",
+          "border-carbon/[0.08] bg-[#f8f8f6]/90 backdrop-blur-md",
           scrolled || menuOpen
             ? "bg-[#f8f8f6]/95 shadow-[0_1px_2px_rgba(17,19,21,0.04),0_16px_48px_-16px_rgba(17,19,21,0.14)]"
             : "shadow-[0_1px_2px_rgba(17,19,21,0.03),0_8px_32px_-16px_rgba(17,19,21,0.08)]"
@@ -60,16 +60,10 @@ export function SiteHeader() {
           ))}
         </div>
 
-        <div className="ml-auto hidden items-center gap-1 lg:flex">
-          <Link
-            href={navActions.signIn.href}
-            className="rounded-lg px-4 py-2 text-[0.9375rem] text-carbon/70 transition-colors hover:bg-carbon/[0.05] hover:text-carbon xl:text-base"
-          >
-            {navActions.signIn.label}
-          </Link>
+        <div className="ml-auto hidden items-center lg:flex">
           <Link
             href={navActions.cta.href}
-            className="group ml-2 inline-flex h-11 items-center gap-2 rounded-xl bg-arc-blue px-5 text-[0.9375rem] font-medium text-white shadow-[0_1px_0_rgba(255,255,255,0.15)_inset,0_8px_20px_-8px_rgba(49,92,255,0.6)] transition-[background-color,transform,box-shadow] hover:bg-arc-blue-hover hover:shadow-[0_1px_0_rgba(255,255,255,0.15)_inset,0_10px_24px_-8px_rgba(49,92,255,0.7)] active:translate-y-px xl:text-base"
+            className="group inline-flex h-11 items-center gap-2 rounded-xl bg-arc-blue px-5 text-[0.9375rem] font-medium text-white shadow-[0_1px_0_rgba(255,255,255,0.15)_inset,0_8px_20px_-8px_rgba(49,92,255,0.6)] transition-[background-color,transform,box-shadow] hover:bg-arc-blue-hover hover:shadow-[0_1px_0_rgba(255,255,255,0.15)_inset,0_10px_24px_-8px_rgba(49,92,255,0.7)] active:translate-y-px xl:text-base"
           >
             {navActions.cta.label}
             <ArrowUpRightIcon
@@ -98,10 +92,10 @@ export function SiteHeader() {
       <div
         id="mobile-menu"
         className={cn(
-          "mx-auto mt-2 w-full max-w-[90rem] origin-top rounded-2xl border border-carbon/[0.08] bg-[#f8f8f6]/95 p-3 shadow-[0_24px_64px_-24px_rgba(17,19,21,0.25)] backdrop-blur-xl transition-[opacity,transform] duration-300 lg:hidden",
+          "mx-auto mt-2 w-full max-w-[90rem] origin-top rounded-2xl border border-carbon/[0.08] bg-[#f8f8f6] p-3 shadow-[0_24px_64px_-24px_rgba(17,19,21,0.25)] transition-[opacity,transform,visibility] duration-300 lg:hidden",
           menuOpen
-            ? "pointer-events-auto scale-100 opacity-100"
-            : "pointer-events-none scale-[0.98] opacity-0"
+            ? "pointer-events-auto visible scale-100 opacity-100"
+            : "pointer-events-none invisible scale-[0.98] opacity-0"
         )}
         aria-hidden={!menuOpen}
       >
@@ -117,18 +111,11 @@ export function SiteHeader() {
             </Link>
           ))}
         </div>
-        <div className="mt-2 grid grid-cols-2 gap-2 border-t border-carbon/[0.08] pt-3">
-          <Link
-            href={navActions.signIn.href}
-            onClick={() => setMenuOpen(false)}
-            className="inline-flex h-12 items-center justify-center rounded-xl border border-carbon/10 bg-white text-[0.9375rem] font-medium text-carbon"
-          >
-            {navActions.signIn.label}
-          </Link>
+        <div className="mt-2 border-t border-carbon/[0.08] pt-3">
           <Link
             href={navActions.cta.href}
             onClick={() => setMenuOpen(false)}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-arc-blue text-[0.9375rem] font-medium text-white"
+            className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-arc-blue text-[0.9375rem] font-medium text-white"
           >
             {navActions.cta.label}
             <ArrowUpRightIcon className="size-3.5" weight="bold" />
@@ -138,8 +125,8 @@ export function SiteHeader() {
 
       <div
         className={cn(
-          "fixed inset-0 -z-10 bg-carbon/20 transition-opacity duration-300 lg:hidden",
-          menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
+          "fixed inset-0 -z-10 bg-carbon/20 transition-[opacity,visibility] duration-300 lg:hidden",
+          menuOpen ? "pointer-events-auto visible opacity-100" : "pointer-events-none invisible opacity-0"
         )}
         onClick={() => setMenuOpen(false)}
         aria-hidden
