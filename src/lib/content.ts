@@ -8,17 +8,77 @@ export const site = {
 
 export const navigation = [
   { label: "Services", href: "#services" },
-  { label: "Approach", href: "#approach" },
-  { label: "Outcomes", href: "#outcomes" },
+  { label: "AI Agents", href: "#ai-agents" },
+  { label: "Automation", href: "#ai-automation" },
+  { label: "Work", href: "#outcomes" },
+  { label: "Insights", href: "#approach" },
 ] as const;
 
+export const navActions = {
+  signIn: { label: "Sign in", href: "/sign-in" },
+  cta: { label: "Start a project", href: "#contact" },
+} as const;
+
 export const hero = {
-  eyebrow: "AI Systems & Automation",
-  headline: "Turn complex operations into intelligent systems.",
+  eyebrow: "Custom Web, Automation & AI",
+  headline: "Custom web platforms, built around your business.",
   subheadline:
-    "ArcLine designs AI automation, intelligent workflows and custom systems that help businesses reduce repetitive work, connect their operations and work more efficiently.",
+    "ArcLine designs and builds custom websites and web applications, then connects your tools, automates repetitive work and adds practical AI where it is genuinely useful.",
   primaryCta: { label: "Start a project", href: "#contact" },
-  secondaryCta: { label: "View services", href: "#services" },
+  secondaryCta: { label: "See how it works", href: "#approach" },
+} as const;
+
+/** Illustrative scenario animated in the hero visual. */
+export const heroScenario = {
+  ask: {
+    tag: "Ask ArcLine",
+    label: "Business requirement",
+    /** Cycled through on each loop of the animation. */
+    examples: [
+      {
+        category: "Custom Web Development",
+        prompt:
+          "We need a custom web platform built around how our business actually works.",
+      },
+      {
+        category: "Business Automation",
+        prompt:
+          "We want to reduce repetitive work and connect our existing tools.",
+      },
+      {
+        category: "AI Integration",
+        prompt:
+          "We want to add practical AI capabilities to our existing digital systems.",
+      },
+    ],
+  },
+  build: {
+    tag: "Solution build",
+    steps: [
+      "Design custom web experience",
+      "Build responsive web application",
+      "Develop custom business features",
+      "Connect required APIs & tools",
+      "Automate repetitive workflows",
+      "Integrate AI where useful",
+    ],
+  },
+  systems: {
+    tag: "Connected systems",
+    items: [
+      { name: "Custom web app", detail: "Built around your business" },
+      { name: "API integrations", detail: "Tools & data connected" },
+      { name: "AI + automation", detail: "Smarter digital workflows" },
+    ],
+  },
+  result: {
+    tag: "Result",
+    label: "Custom digital solution",
+    status: "Live",
+    body: "A tailored web platform with connected systems, automation, and intelligent features.",
+    traits: ["Custom", "Connected", "Scalable"],
+    cta: { label: "Explore our solutions", href: "#services" },
+  },
 } as const;
 
 export const proposition = {
@@ -39,6 +99,7 @@ export const challenges = [
 export const services = [
   {
     number: "01",
+    slug: "ai-automation",
     title: "AI Automation",
     summary:
       "AI-powered automation that removes repetitive manual work from business operations.",
@@ -51,6 +112,7 @@ export const services = [
   },
   {
     number: "02",
+    slug: "intelligent-workflows",
     title: "Intelligent Workflows",
     summary:
       "Connected workflows that move tasks, information and decisions through your organisation automatically.",
@@ -63,6 +125,7 @@ export const services = [
   },
   {
     number: "03",
+    slug: "ai-agents",
     title: "AI Agents",
     summary:
       "Purpose-built AI agents that perform specific business tasks — practical systems, not gimmicks.",
@@ -75,6 +138,7 @@ export const services = [
   },
   {
     number: "04",
+    slug: "data-integration",
     title: "Data Integration",
     summary:
       "Reliable connections between fragmented systems so teams have the information they need.",
@@ -87,6 +151,7 @@ export const services = [
   },
   {
     number: "05",
+    slug: "internal-tools",
     title: "Internal Tools",
     summary:
       "Custom software designed around how your business actually operates.",
@@ -99,6 +164,7 @@ export const services = [
   },
   {
     number: "06",
+    slug: "process-transformation",
     title: "Process Transformation",
     summary:
       "Analysis and redesign of existing processes using modern technology — not AI for its own sake.",
@@ -167,6 +233,8 @@ export const footer = {
   tagline: "Less manual work. Better systems.",
   links: [
     { label: "Services", href: "#services" },
+    { label: "AI Agents", href: "#ai-agents" },
+    { label: "Automation", href: "#ai-automation" },
     { label: "Approach", href: "#approach" },
     { label: "Contact", href: "#contact" },
   ],

@@ -4,7 +4,7 @@ import { SectionLabel } from "@/components/ui/section-label";
 
 export function ServicesSection() {
   return (
-    <section id="services" className="border-b border-soft-grey bg-warm-ivory scroll-mt-20">
+    <section id="services" className="border-b border-soft-grey bg-warm-ivory scroll-mt-28">
       <Container className="py-20 md:py-28 lg:py-32">
         <div className="mb-16 max-w-2xl md:mb-20">
           <div data-animate="fade-up">
@@ -22,8 +22,9 @@ export function ServicesSection() {
           {services.map((service) => (
             <article
               key={service.number}
+              id={service.slug}
               data-service-row
-              className="grid gap-6 py-10 md:grid-cols-[4rem_1fr_1.2fr] md:gap-10 md:py-12 lg:py-14"
+              className="grid scroll-mt-28 gap-6 py-10 md:grid-cols-[4rem_1fr_1.2fr] md:gap-10 md:py-12 lg:py-14"
             >
               <p
                 data-service-number

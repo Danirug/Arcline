@@ -173,7 +173,7 @@ export function ApproachSection() {
   return (
     <section
       id="approach"
-      className="relative overflow-hidden border-b border-white/10 bg-graphite text-off-white scroll-mt-20"
+      className="relative overflow-hidden border-b border-white/10 bg-graphite text-off-white scroll-mt-28"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-50"

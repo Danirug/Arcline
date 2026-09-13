@@ -3,26 +3,104 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { site } from "@/lib/content";
 
+/**
+ * Brand mark paths are lifted directly from /public/logos/arcline*.svg
+ * (600 x 144 artboard) so the header wordmark is pixel-identical to the
+ * supplied logo files. The "SOLUTIONS" descriptor is intentionally omitted
+ * here; the full lock-up is used in the footer via <FullLogo />.
+ */
+const ARC_PATH =
+  "M124 106H60C52.8799 106 45.9197 103.889 39.9995 99.9329C34.0793 95.9772 29.4651 90.3548 26.7404 83.7766C24.0156 77.1985 23.3027 69.9601 24.6917 62.9768C26.0808 55.9934 29.5095 49.5789 34.5442 44.5442C39.5789 39.5095 45.9934 36.0808 52.9768 34.6917C59.9601 33.3027 67.1985 34.0156 73.7766 36.7404C80.3548 39.4651 85.9772 44.0793 89.9329 49.9995C93.8887 55.9197 96 62.8799 96 70";
+const DOT_PATH =
+  "M87 70C87 72.3869 87.9482 74.6761 89.636 76.364C91.3239 78.0518 93.6131 79 96 79C98.3869 79 100.676 78.0518 102.364 76.364C104.052 74.6761 105 72.3869 105 70C105 67.6131 104.052 65.3239 102.364 63.636C100.676 61.9482 98.3869 61 96 61C93.6131 61 91.3239 61.9482 89.636 63.636C87.9482 65.3239 87 67.6131 87 70Z";
+const WORDMARK_PATH =
+  "M169.36 89L184.796 40.04H196.798L212.234 89H203.802L189.794 45.072H191.63L177.792 89H169.36ZM177.962 78.392V70.742H203.666V78.392H177.962ZM218.381 89V52.28H225.623V61.222L224.739 60.066C225.192 58.842 225.793 57.7313 226.541 56.734C227.312 55.714 228.23 54.8753 229.295 54.218C230.202 53.606 231.199 53.13 232.287 52.79C233.398 52.4273 234.531 52.212 235.687 52.144C236.843 52.0533 237.965 52.0987 239.053 52.28V59.93C237.965 59.6127 236.707 59.5107 235.279 59.624C233.874 59.7373 232.604 60.134 231.471 60.814C230.338 61.426 229.408 62.208 228.683 63.16C227.98 64.112 227.459 65.2 227.119 66.424C226.779 67.6253 226.609 68.9287 226.609 70.334V89H218.381ZM260.823 90.02C257.038 90.02 253.808 89.1813 251.133 87.504C248.459 85.804 246.407 83.492 244.979 80.568C243.574 77.644 242.86 74.3347 242.837 70.64C242.86 66.8773 243.597 63.5453 245.047 60.644C246.521 57.72 248.606 55.4307 251.303 53.776C254.001 52.0987 257.208 51.26 260.925 51.26C265.096 51.26 268.621 52.314 271.499 54.422C274.401 56.5073 276.293 59.3633 277.177 62.99L269.017 65.2C268.383 63.228 267.329 61.698 265.855 60.61C264.382 59.4993 262.705 58.944 260.823 58.944C258.693 58.944 256.936 59.454 255.553 60.474C254.171 61.4713 253.151 62.854 252.493 64.622C251.836 66.39 251.507 68.396 251.507 70.64C251.507 74.1307 252.289 76.9527 253.853 79.106C255.417 81.2593 257.741 82.336 260.823 82.336C262.999 82.336 264.711 81.8373 265.957 80.84C267.227 79.8427 268.179 78.4033 268.813 76.522L277.177 78.392C276.044 82.132 274.061 85.0107 271.227 87.028C268.394 89.0227 264.926 90.02 260.823 90.02ZM284.67 89V40.04H292.864V81.316H314.488V89H284.67ZM320.928 46.704V39.19H329.122V46.704H320.928ZM320.928 89V52.28H329.122V89H320.928ZM364.705 89V71.32C364.705 70.164 364.626 68.8833 364.467 67.478C364.308 66.0727 363.934 64.724 363.345 63.432C362.778 62.1173 361.917 61.0407 360.761 60.202C359.628 59.3633 358.086 58.944 356.137 58.944C355.094 58.944 354.063 59.114 353.043 59.454C352.023 59.794 351.094 60.3833 350.255 61.222C349.439 62.038 348.782 63.1713 348.283 64.622C347.784 66.05 347.535 67.886 347.535 70.13L342.673 68.056C342.673 64.928 343.274 62.0947 344.475 59.556C345.699 57.0173 347.49 55 349.847 53.504C352.204 51.9853 355.106 51.226 358.551 51.226C361.271 51.226 363.515 51.6793 365.283 52.586C367.051 53.4927 368.456 54.6487 369.499 56.054C370.542 57.4593 371.312 58.9553 371.811 60.542C372.31 62.1287 372.627 63.636 372.763 65.064C372.922 66.4693 373.001 67.614 373.001 68.498V89H364.705ZM339.239 89V52.28H346.549V63.67H347.535V89H339.239ZM397.97 90.02C394.252 90.02 390.988 89.2153 388.178 87.606C385.367 85.9967 383.168 83.764 381.582 80.908C380.018 78.052 379.236 74.7653 379.236 71.048C379.236 67.036 380.006 63.5567 381.548 60.61C383.089 57.6407 385.231 55.34 387.974 53.708C390.716 52.076 393.89 51.26 397.494 51.26C401.302 51.26 404.532 52.1553 407.184 53.946C409.858 55.714 411.842 58.2187 413.134 61.46C414.426 64.7013 414.913 68.5207 414.596 72.918H406.47V69.926C406.447 65.9367 405.744 63.024 404.362 61.188C402.979 59.352 400.803 58.434 397.834 58.434C394.479 58.434 391.986 59.4767 390.354 61.562C388.722 63.6247 387.906 66.6507 387.906 70.64C387.906 74.3573 388.722 77.236 390.354 79.276C391.986 81.316 394.366 82.336 397.494 82.336C399.511 82.336 401.245 81.894 402.696 81.01C404.169 80.1033 405.302 78.8 406.096 77.1L414.188 79.548C412.782 82.8573 410.606 85.43 407.66 87.266C404.736 89.102 401.506 90.02 397.97 90.02ZM385.322 72.918V66.73H410.584V72.918H385.322Z";
+
+type LogoMarkProps = {
+  className?: string;
+  /** Colour of the arc mark. Defaults to currentColor so it follows text colour. */
+  accent?: string;
+};
+
+export function LogoMark({ className, accent = "currentColor" }: LogoMarkProps) {
+  return (
+    <svg
+      viewBox="16 16 116 104"
+      className={cn("h-7 w-auto", className)}
+      aria-hidden
+      focusable="false"
+    >
+      <path
+        d={ARC_PATH}
+        stroke={accent}
+        strokeWidth="10"
+        strokeLinejoin="round"
+        fill="none"
+      />
+      <path d={DOT_PATH} fill={accent} />
+    </svg>
+  );
+}
+
 type LogoProps = {
   className?: string;
   variant?: "light" | "dark";
+  /** "mono" renders the mark in the text colour (as in the brand nav); "blue" uses Arc Blue. */
+  mark?: "mono" | "blue";
 };
 
-export function Logo({ className, variant = "light" }: LogoProps) {
+export function Logo({ className, variant = "light", mark = "mono" }: LogoProps) {
+  const ink = variant === "light" ? "#111315" : "#f5f5f3";
+  const accent = mark === "blue" ? "#315cff" : ink;
+
   return (
     <Link
       href="/"
       className={cn(
-        "group inline-flex items-baseline gap-0.5 text-[1.0625rem] font-medium tracking-[-0.02em] transition-opacity hover:opacity-80",
-        variant === "light" ? "text-carbon" : "text-off-white",
+        "group inline-flex shrink-0 items-center transition-opacity hover:opacity-80",
         className
       )}
       aria-label={`${site.name} home`}
     >
-      <span>{site.name}</span>
-      <span className="text-arc-blue" aria-hidden>
-        /
-      </span>
+      <svg
+        viewBox="16 16 400 104"
+        className="h-[1.75rem] w-auto md:h-[1.875rem]"
+        role="img"
+        aria-hidden
+        focusable="false"
+      >
+        <path
+          d={ARC_PATH}
+          stroke={accent}
+          strokeWidth="10"
+          strokeLinejoin="round"
+          fill="none"
+        />
+        <path d={DOT_PATH} fill={accent} />
+        <path d={WORDMARK_PATH} fill={ink} />
+      </svg>
+    </Link>
+  );
+}
+
+/** Full lock-up including the "SOLUTIONS" descriptor, straight from the logo file. */
+export function FullLogo({
+  className,
+  variant = "blue",
+}: {
+  className?: string;
+  variant?: "blue" | "black";
+}) {
+  return (
+    <Link href="/" className={cn("inline-flex", className)} aria-label={`${site.name} home`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={variant === "blue" ? "/logos/arclineBlue.svg" : "/logos/arclineBlack.svg"}
+        alt={`${site.name} Solutions`}
+        width={600}
+        height={144}
+        className="h-10 w-auto"
+      />
     </Link>
   );
 }

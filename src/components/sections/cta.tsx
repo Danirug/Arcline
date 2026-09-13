@@ -7,11 +7,11 @@ import { SectionLabel } from "@/components/ui/section-label";
 
 export function CtaSection() {
   return (
-    <section id="contact" className="bg-warm-ivory scroll-mt-20">
+    <section id="contact" className="bg-warm-ivory scroll-mt-28">
       <Container className="py-20 md:py-28 lg:py-32">
         <div
           data-cta="card"
-          className="relative overflow-hidden border border-soft-grey bg-white p-10 md:p-14 lg:p-16"
+          className="relative overflow-hidden rounded-2xl border border-soft-grey bg-white p-10 md:p-14 lg:p-16"
         >
           <div
             className="pointer-events-none absolute -right-20 -top-20 size-64 opacity-30"
@@ -35,7 +35,7 @@ export function CtaSection() {
 
             <Link
               href={cta.button.href}
-              className="group inline-flex h-12 shrink-0 items-center justify-center gap-2.5 bg-arc-blue px-7 text-sm font-medium text-white transition-colors hover:bg-arc-blue-hover lg:mb-1"
+              className="group inline-flex h-[3.25rem] shrink-0 items-center justify-center gap-2.5 rounded-xl bg-arc-blue px-7 text-base font-medium text-white shadow-[0_1px_0_rgba(255,255,255,0.15)_inset,0_12px_28px_-10px_rgba(49,92,255,0.65)] transition-[background-color,transform,box-shadow] hover:bg-arc-blue-hover active:translate-y-px lg:mb-1"
             >
               {cta.button.label}
               <ArrowUpRightIcon

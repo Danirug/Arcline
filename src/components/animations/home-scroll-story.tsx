@@ -17,21 +17,24 @@ export function HomeScrollStory() {
       });
 
       heroTl
-        .from("[data-hero='eyebrow']", { opacity: 0, y: 24 })
+        .from("[data-hero='visual']", {
+          opacity: 0,
+          y: 28,
+          duration: reduced ? 0.01 : 1.1,
+        })
         .from(
           "[data-hero='headline']",
-          { opacity: 0, y: 56, duration: reduced ? 0.01 : 1.1 },
-          "-=0.65"
+          { opacity: 0, y: 48, duration: reduced ? 0.01 : 1.1 },
+          "-=0.75"
         )
-        .from("[data-hero='subheadline']", { opacity: 0, y: 32 }, "-=0.7")
-        .from("[data-hero='actions']", { opacity: 0, y: 24 }, "-=0.65")
-        .from("[data-hero='footer']", { opacity: 0 }, "-=0.5");
+        .from("[data-hero='subheadline']", { opacity: 0, y: 28 }, "-=0.75")
+        .from("[data-hero='actions']", { opacity: 0, y: 20 }, "-=0.7");
 
       if (!reduced) {
-        // Hero: scroll parallax
+        // Hero: gentle scroll parallax
         gsap.to("[data-hero='content']", {
-          y: -72,
-          opacity: 0.15,
+          y: -40,
+          opacity: 0.3,
           ease: "none",
           scrollTrigger: {
             trigger: "[data-section='hero']",
@@ -41,26 +44,14 @@ export function HomeScrollStory() {
           },
         });
 
-        gsap.to("[data-hero='background']", {
-          y: 100,
-          scale: 1.06,
+        gsap.to("[data-hero='visual']", {
+          y: -24,
           ease: "none",
           scrollTrigger: {
             trigger: "[data-section='hero']",
             start: "top top",
             end: "bottom top",
             scrub: 1.5,
-          },
-        });
-
-        gsap.to("[data-hero='grid']", {
-          opacity: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: "[data-section='hero']",
-            start: "top top",
-            end: "center top",
-            scrub: true,
           },
         });
       }

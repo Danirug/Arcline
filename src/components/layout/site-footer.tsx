@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import { footer, site } from "@/lib/content";
 import { Container } from "@/components/ui/container";
-import { Logo } from "@/components/ui/logo";
+import { FullLogo } from "@/components/ui/logo";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -12,7 +12,7 @@ export function SiteFooter() {
       <Container className="py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr] md:gap-8">
           <div className="space-y-6">
-            <Logo />
+            <FullLogo variant="blue" />
             <p className="max-w-sm text-sm leading-relaxed text-slate">
               {footer.tagline}
             </p>

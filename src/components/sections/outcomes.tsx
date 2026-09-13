@@ -7,7 +7,7 @@ export function OutcomesSection() {
     <section
       id="outcomes"
       data-section="outcomes"
-      className="relative overflow-hidden bg-graphite text-off-white scroll-mt-20"
+      className="relative overflow-hidden bg-graphite text-off-white scroll-mt-28"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-40"
